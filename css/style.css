@@ -1,0 +1,211 @@
+/* Making logo on grow bigger and become visible.
+ */
+
+ @keyframes growFadeIn {
+  from {
+    width: 25px;
+    opacity: 0;
+  }
+  to {
+    width: 475px;
+    opacity: 1;
+  }
+}
+
+/* Applies the growFadeIn animation to the element with the ID logo */
+
+#logo {
+  animation: growFadeIn 5s;
+}
+
+
+/* Sets the font of the text on a webpage to "Poppins" font, sets the background image to a seamless concrete pattern, and sets the background color to a light grayish tone. */
+
+body {
+  font-family: "Poppins", serif;
+  background-image: url(../images/concrete_seamless.png);
+  background-color: #f1f1f1;
+}
+
+/* Styles the header element by making its content layout flexible, aligning items to the center vertically, arranging its content in a column direction, and removing any bottom margin.
+ */
+
+header{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+/* Arranges the menu by its links in a vertical column layout */
+
+.nav_links {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles both unvisited and visited links by setting color to blue and underlining them */
+
+a:link, a:visited {
+  color: #3e61ff;
+  text-decoration: underline;
+}
+
+/* Styles the header section of a card element with a background color of teal, a solid border with a width of 2 pixels colored in a lighter teal shade, adding padding of 20 pixels at the top and bottom, and applying a rounded border to the top corners with a radius of 50 pixels  */
+
+.card > header {
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0;
+    border-radius: 50px 50px 0 0;
+}
+
+/* Gives element rounded corners with a radius of 50 pixels on the top left and top right corners */
+
+div.card  {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* Styles card element by arranging its content in a column layout, stretching to fill the space, and setting its initial size to 450 pixels and flexible size */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 0 1 450px;
+}
+
+/* Styles pricing section with elements evenly spaced, wrapping onto the next line if needed, and adding 20 pixels of padding */
+
+.pricing {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+/* This styles a gallery by arranging its items in rows with equal spacing, centering them horizontally, and wrapping them onto the next row if necessary. */
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Styles images within a gallery by adding a solid border with a specific color, spacing them 10 pixels away from each other, and setting their width to 300 pixels. */
+
+.gallery img {
+  border: solid 10px #50C7C7;
+  margin: 10px;
+  width: 300px;
+}
+
+/* media query when the screen-size is greater than 900px */
+
+@media (min-width: 900px) {
+  
+  /* This styles a header with a flexible layout, arranging its elements horizontally and evenly distributing space between them. The navigation links are aligned to the right end of the header. */
+  
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+  }
+  .nav_links {
+    flex-direction: row;
+    justify-content: flex-end;
+  } 
+
+  /* The pricing section is designed with a flexible layout, making its elements centered both horizontally and vertically within the container. Each card within the pricing section has a set initial size of 275 pixels but is flexible */
+
+   .pricing {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .card {
+    flex: 0 1 275px;
+  }
+
+  /* Fixes the header to the top of the viewport. The main content area maintains a margin of 100 pixels from the top */
+
+  body > header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  main {
+    margin-top: 100px;
+  }
+}
+  /* Media query for reduced motion. */
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo {
+      animation: none;
+    }
+  }
+
+  /* Media query when printed in portrait. */
+
+  @media print and (orientation: portrait) {
+
+    /* Sets the default font for text to Arial or Helvetica and removes the background image */
+     
+      body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+      }
+
+    /* Styles header sections arranging content vertically in a column and evenly spaces the content within the header */
+
+      header {
+        flex-direction: column;
+        justify-content: space-around;
+      
+      }
+
+    /* Arranges links horizontally giving them even space of 150 px */
+
+      .nav_links {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 150px;
+      } 
+
+    /* Arrange elements into row making them centered vertically and horizontally */
+
+      .pricing {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+    /* Adds a solid border 2px wide and sets card's initial width to 325 px and allows it to get bigger or smaller with layout */
+
+      .card {
+        border: solid 2px #45ADDD;
+        flex: 0 1 325px;
+      }
+
+    /* Hides the elements with .gallery class and #gallery ID */
+
+      .gallery, #gallery {
+        display: none;
+      }
+
+    /* Adds thumbs up emoji after second list item in unordered list that's a direct child of main element */
+
+      main ul > li:nth-child(2)::after {
+        content: ' 👍';
+      }
+
+  }
